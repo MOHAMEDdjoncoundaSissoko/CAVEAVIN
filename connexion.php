@@ -42,8 +42,7 @@ include_once('formulaires.php');
 						if (isAdmin($_SESSION['login'])) $_SESSION["statut"] = 'admin';
 						else						     $_SESSION["statut"] = 'user';
 					#header('Location: index.php');	
-					redirect("index.php", 1);
-
+					redirect('index.php',0.1);
 					// 1 : on ouvre le fichier
 					$monfichier = fopen('acces.log', 'a+');
 					

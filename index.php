@@ -1,10 +1,11 @@
 <?php
+session_start();
 // BDD
 // etudiants: EMAIL ADRESSE INSEE
 //villes: COMMUNE CP DEPT INSEE
 include_once("fonctions.php");
 include_once("formulaires.php");
-session_start();
+
 if (empty($_SESSION['login'])) {
     redirect("connexion.php", 1);
 }
