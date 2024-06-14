@@ -210,7 +210,7 @@
                     <label style="font-size: 1.2rem; margin-left: 50px; margin-top:20px;" for="id_quantite">Quantité: </label>
                     <input style="width: auto; height: 50px; margin-bottom:20px; margin-top:20px;" type="number" name="Quantite" id="id_quantite" placeholder="Quantité de vin" required size="40"/><br/>
 
-                    <select style="width:  220px; height: 50px; margin-bottom:20px; margin-top:20px; display: block; margin-left: auto; margin-right: auto;" id="id_ProducteurAnneeNomVin" name="ProducteurAnneeNomVin" size="1">
+                    <select style="width:  auto; height: 50px; margin-bottom:20px; margin-top:20px; display: block; margin-left: auto; margin-right: auto;" id="id_ProducteurAnneeNomVin" name="ProducteurAnneeNomVin" size="1">
                         <?php
                         foreach ($Vin as $vin) {
                             echo "<option value='" . $vin['Producteur'] .' - '. $vin['Annee'] .' - '. $vin['NomVin'] . "'>" . $vin['Producteur'] .' - '. $vin['Annee'] .' - '. $vin['NomVin'] ."</option>";
@@ -254,7 +254,7 @@
                     <img src="./image.php" onclick="this.src='image.php?' + Math.random();" alt="captcha" style="cursor:pointer;">
 
                     
-                    <input style="width: 220px; height: 50px; margin-bottom:20px; margin-top:20px; display: block; margin-left: auto; margin-right: auto;" type="submit" name="supprimer" value="Supprimer"/>
+                    <input style="width: auto; height: 50px; margin-bottom:20px; margin-top:20px; display: block; margin-left: auto; margin-right: auto;" type="submit" name="supprimer" value="Supprimer"/>
                 </fieldset>
             </form>
         </div>
@@ -263,45 +263,61 @@
 
 
 //***************************************************Formulaire de modification********************************************    
-    function FormulaireModifVin(){
-        try {
-            $madb = new PDO('sqlite:bdd/CaveAVin.db');
-            // Requête pour obtenir la liste des vins
-            $rq = "SELECT DISTINCT Producteur, Annee, NomVin FROM Vin";
-            $resultats = $madb->query($rq);
-            $Vin = $resultats->fetchAll(PDO::FETCH_ASSOC);
-            ?>
-            <div class="wrapper">
-                <div class="from-box login">
-                    <h3>Modifier la quantité d'un vin</h3> 
-                </div>
-                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                    <fieldset>
-                        <select style="width: auto; height: 50px; margin-bottom:20px; margin-top:50px; display: block; margin-left: auto; margin-right: auto;" id="id_Fil" name="choix_vin" size="1" onchange="getQuantity(this.value)">
-                            <?php
-                            foreach ($Vin as $vin) {
-                                $value = $vin['Producteur'] . '|' . $vin['Annee'] . '|' . $vin['NomVin'];
-                                echo "<option value=\"$value\">" . $vin['Producteur'] .' - '. $vin['Annee'] . ' - '. $vin['NomVin'] ."</option>";
-                            }
-                            ?>
-                        </select> </br>
-                        
-                        <select style="width: auto; display: block; margin-left: auto; margin-right: auto;" name="quantite" id="quantite">
-                            <!-- les options de quantité seront générées dynamiquement -->
-                        </select>    
-
-                        <input type="submit" style="width: 220px; display: block; margin-left: auto; margin-right: auto; margin-top :40px" value="Modifier"/>
-                    </fieldset>
-                </form>
+function FormulaireModifVin(){
+    try {
+        $madb = new PDO('sqlite:bdd/CaveAVin.db');
+        // Requête pour obtenir la liste des vins
+        $rq = "SELECT DISTINCT Producteur, Annee, NomVin FROM Vin";
+        $resultats = $madb->query($rq);
+        $Vin = $resultats->fetchAll(PDO::FETCH_ASSOC);
+        ?>
+        <div class="wrapper">
+            <div class="from-box login">
+                <h3>Modifier la quantité d'un vin</h3> 
             </div>
-            <?php
-            echo '<br>';
-        } 
-        catch (Exception $e) {
-            echo "<p>Erreur lors de la connexion à la BDD: " . $e->getMessage() . "</p>";
-        }
-    }
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                <fieldset>
+                    <select style="width: auto; height: 50px; margin-bottom:20px; margin-top:50px; display: block; margin-left: auto; margin-right: auto;" id="id_Fil" name="choix_vin" size="1">
+                        <?php
+                        foreach ($Vin as $vin) {
+                            $value = $vin['Producteur'] . '|' . $vin['Annee'] . '|' . $vin['NomVin'];
+                            echo "<option value=\"$value\">" . $vin['Producteur'] .' - '. $vin['Annee'] . ' - '. $vin['NomVin'] ."</option>";
+                        }
+                        ?>
+                    </select> </br>
+                    <p style="display : block; text-align : center">Quantités :</p>
+                    <input type="text" style="width: auto; display: block; margin-left: auto; margin-right: auto;" id="quantite" name="quantite" readonly>
+                    <action= "<?php include 'contact.php'; ?>
 
+                    <input type="submit" style="width: 220px; display: block; margin-left: auto; margin-right: auto; margin-top :40px" value="Modifier"/>
+                </fieldset>
+
+                <script>
+                const selectVin = document.getElementById('id_Fil');
+                const inputQuantite = document.getElementById('quantite');
+
+                selectVin.addEventListener('change', function() {
+                    const valeurSelect = selectVin.value;
+                    const producteur = valeurSelect.split('|')[0];
+                    const annee = valeurSelect.split('|')[1];
+                    const nomVin = valeurSelect.split('|')[2];
+
+                    fetch(`get_quantite.php?producteur=${producteur}&annee=${annee}&nom_vin=${nomVin}`)
+                        .then(response => response.text())
+                        .then(quantite => {
+                            inputQuantite.value = quantite;
+                        });
+                });
+                </script>
+            </form>
+        </div>
+        <?php
+        echo '<br>';
+    } 
+    catch (Exception $e) {
+        echo "<p>Erreur lors de la connexion à la BDD: " . $e->getMessage() . "</p>";
+    }
+}
 
 ?>
 		

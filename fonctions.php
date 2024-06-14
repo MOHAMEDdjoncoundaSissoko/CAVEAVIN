@@ -295,4 +295,28 @@ function afficheTableau($tab){
 		return $data;
 	}
 
+	/*
+  Fonction pour modifier la quantité d'un vin dans la base de données
+  @param string $Producteur Le producteur du vin
+  @param string $Annee L'année du vin
+  @param string $NomVin Le nom du vin
+  @param int $Quantite La nouvelle quantité du vin
+  @return bool True si la mise à jour est réussie, false sinon
+ */
+
+
+
+/* Fonction pour mettre à jour la quantité d'un vin à partir d'un formulaire*/
+function majQuantite() {
+    if (isset($_POST['choix_vin']) && isset($_POST['Quantite'])) {
+        // Récupérer les informations du vin à partir du champ choix_vin
+        list($Producteur, $Annee, $NomVin) = explode('|', $_POST['choix_vin']);
+        
+        // Convertir la quantité en entier
+        $Quantite = intval($_POST['Quantite']);
+        
+        // Appeler la fonction modifierVin pour mettre à jour la quantité du vin
+        modifierVin($Producteur, $Annee, $NomVin, $Quantite);
+    }
+}
 ?>
