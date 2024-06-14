@@ -1,11 +1,10 @@
 <?php
-session_start();
 // BDD
 // etudiants: EMAIL ADRESSE INSEE
 //villes: COMMUNE CP DEPT INSEE
 include_once("fonctions.php");
 include_once("formulaires.php");
-
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -80,7 +79,7 @@ include_once("formulaires.php");
       
       <div class="col">
         <div class="card shadow-sm">
-          <img src="image/'Rouge'_'Bordeaux'.png" style="width: 420px; height: 400px;" alt="">
+          <img src="image/rouge_bordeau.jpg" style="width: 420px; height: 400px;" alt="">
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
@@ -94,7 +93,7 @@ include_once("formulaires.php");
       </div>
       <div class="col">
         <div class="card shadow-sm">
-        <img src="image/'Blanc'_'Côtes du Rhone'.png" style="width: 420px; height: 400px;" alt="">
+        <img src="image/blanc_rhone.png" style="width: 420px; height: 400px;" alt="">
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
@@ -108,7 +107,7 @@ include_once("formulaires.php");
       </div>
       <div class="col">
         <div class="card shadow-sm">
-        <img src="image/'Rouge'_'Bourgogne'.png" style="width: 420px; height: 400px;" alt="">       
+        <img src="image/rouge_bourgogne.jpg" style="width: 420px; height: 400px;" alt="">       
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
@@ -123,7 +122,7 @@ include_once("formulaires.php");
 
       <div class="col">
         <div class="card shadow-sm">
-        <img src="image/'Blanc'_'Loire'.png" style="width: 420px; height: 400px;" alt=""> 
+        <img src="image/blanc_loire.png" style="width: 420px; height: 400px;" alt=""> 
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
@@ -137,7 +136,7 @@ include_once("formulaires.php");
       </div>
       <div class="col">
         <div class="card shadow-sm">
-        <img src="image/'Rosé'_'Loire'.png" style="width: 420px; height: 400px;" alt=""> 
+        <img src="image/rose_loire.jpg" style="width: 420px; height: 400px;" alt=""> 
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
@@ -151,7 +150,7 @@ include_once("formulaires.php");
       </div>
       <div class="col">
         <div class="card shadow-sm">
-        <img src="image/'Rosé'_'Côtes du Rhone'.png" style="width: 420px; height: 400px;" alt=""> 
+        <img src="image/rose_rhone.png" style="width: 420px; height: 400px;" alt=""> 
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
@@ -166,7 +165,7 @@ include_once("formulaires.php");
 
       <div class="col">
         <div class="card shadow-sm">
-        <img src="image/'Rouge'_'Loire'.png" style="width: 420px; height: 400px;" alt="">           
+        <img src="image/rouge_loire.webp" style="width: 420px; height: 400px;" alt="">           
         <div class="card-body">
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
@@ -180,7 +179,7 @@ include_once("formulaires.php");
       </div>
       <div class="col">
         <div class="card shadow-sm">
-        <img src="image/'Rosé'_'Bordeaux'.png" style="width: 420px; height: 400px;" alt="">           <div class="card-body">
+        <img src="image/rose_bordeau.png" style="width: 420px; height: 400px;" alt="">           <div class="card-body">
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
                 <button type="button" class="btn btn-sm btn-outline-secondary">Vin Rosé</button>
@@ -193,7 +192,7 @@ include_once("formulaires.php");
       </div>
       <div class="col">
         <div class="card shadow-sm">
-        <img src="image/'Rouge'_'Côtes du Rhone'.png" style="width: 400px; height: 370px;" alt="">           <div class="card-body">
+        <img src="image/rouge-rhones.jpg" style="width: 400px; height: 370px;" alt="">           <div class="card-body">
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
