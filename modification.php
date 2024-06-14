@@ -3,10 +3,7 @@ session_start();
 include_once("fonctions.php");
 include_once ("fonctions.php");
 
-if(!empty($_SESSION) && isset($_SESSION['admin']) && $_SESSION['admin']==True){
-	echo "Vous n'êtes pas autorisé à accéder à cette page.";
-    redirect("index.php",1);
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +26,10 @@ if(!empty($_SESSION) && isset($_SESSION['admin']) && $_SESSION['admin']==True){
         <nav>
        		<?php
 				
+				if(!empty($_SESSION) && isset($_SESSION['admin']) && $_SESSION['admin']==True){
+					echo "Vous n'êtes pas autorisé à accéder à cette page.";
+					redirect("index.php",1);
+				}
                 // affichage du formulaire de connexion ou le menu avec le nom de la personne
 				if (empty($_SESSION)) {
 					echo "Veuillez vous connecter";
