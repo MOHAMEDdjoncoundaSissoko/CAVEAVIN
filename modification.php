@@ -1,7 +1,7 @@
 <?php
 session_start();
-include 'formulaires.php';
-include 'fonctions.php';
+include_once("fonctions.php");
+include_once ("fonctions.php");
 
 if(!empty($_SESSION) && isset($_SESSION['admin']) && $_SESSION['admin']==True){
 	echo "Vous n'êtes pas autorisé à accéder à cette page.";
